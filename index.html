@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script>
+      var dice = [];
+      function getDice1() {
+        var dice1 = Math.floor(Math.random() * 6);
+        var number = dice1 + 1;
+        document.getElementById("condice1").innerHTML =
+          '<img src="./images/' + number + '.png" width="480">';
+      }
+
+      function switchDice1(t) {
+        if (t.id == "start") {
+          dice.push(setInterval(getDice1, 10));
+          console.log(dice);
+        }
+        if (t.id == "stop") {
+          console.log(dice);
+          clearInterval(dice.shift());
+        }
+      }
+    </script>
+    <title>Dice</title>
+  </head>
+  <body>
+    <div>
+      <h4>1D6</h4>
+      <p>
+        <input
+          id="start"
+          type="button"
+          value="スタート"
+          onclick="switchDice1(this);"
+        />
+        <input
+          id="stop"
+          type="button"
+          value="ストップ"
+          onclick="switchDice1(this);"
+        />
+      </p>
+      <p><span id="condice1"></span></p>
+    </div>
+  </body>
+</html>
